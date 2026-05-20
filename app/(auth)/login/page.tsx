@@ -3,8 +3,8 @@ import Link from "next/link";
 import { ALLOWED_GITHUB_LOGIN } from "@/lib/auth";
 
 export const metadata: Metadata = {
-	title: "登录 - Entrant",
-	description: "登录 Entrant",
+	title: "登录 - Entrant Roster",
+	description: "登录 Entrant Roster",
 };
 
 const errorMessages: Record<string, string> = {
@@ -29,26 +29,26 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
 	const errorMessage = errorKey ? errorMessages[errorKey] ?? "登录失败，请重新尝试。" : null;
 
 	return (
-		<main className="grid min-h-dvh bg-[color:var(--semi-color-bg-0)] text-[color:var(--semi-color-text-0)] lg:grid-cols-[minmax(0,1fr)_480px]">
-			<section className="hidden min-h-0 flex-col justify-between border-r border-[color:var(--semi-color-border)] bg-[color:var(--semi-color-bg-1)] p-10 lg:flex">
+		<main className="grid min-h-dvh bg-(--semi-color-bg-0) text-(--semi-color-text-0) lg:grid-cols-[minmax(0,1fr)_480px]">
+			<section className="hidden min-h-0 flex-col justify-between border-r border-(--semi-color-border) bg-(--semi-color-bg-1) p-10 lg:flex">
 				<div className="flex items-center gap-3">
 					<div className="flex size-10 items-center justify-center rounded-lg bg-blue-600 text-lg font-semibold text-white">E</div>
 					<div>
-						<p className="text-base font-semibold">Entrant</p>
-						<p className="text-sm text-[color:var(--semi-color-text-2)]">OpenNext Cloudflare 应用</p>
+						<p className="text-base font-semibold">Entrant Roster</p>
+						<p className="text-sm text-(--semi-color-text-2)">OpenNext Cloudflare 应用</p>
 					</div>
 				</div>
 
 				<div className="max-w-xl">
 					<p className="mb-4 text-sm font-medium text-blue-600">工作台登录</p>
 					<h1 className="text-4xl font-semibold leading-tight">管理入口，保持清晰高效。</h1>
-					<p className="mt-5 max-w-lg text-base leading-7 text-[color:var(--semi-color-text-2)]">
+					<p className="mt-5 max-w-lg text-base leading-7 text-(--semi-color-text-2)">
 						使用 GitHub 账号完成授权，仅允许 {ALLOWED_GITHUB_LOGIN} 访问模板、基础数据、测试功能和系统设置。
 					</p>
 				</div>
 
-				<p className="text-sm text-[color:var(--semi-color-text-2)]">
-					Copyright &copy; {new Date().getFullYear()} Entrant. All Rights Reserved.
+				<p className="text-sm text-(--semi-color-text-2)">
+					Copyright &copy; {new Date().getFullYear()} Entrant Roster. All Rights Reserved.
 				</p>
 			</section>
 
@@ -58,18 +58,18 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
 						<div className="mb-5 flex items-center gap-3">
 							<div className="flex size-10 items-center justify-center rounded-lg bg-blue-600 text-lg font-semibold text-white">E</div>
 							<div>
-								<p className="text-base font-semibold">Entrant</p>
-								<p className="text-sm text-[color:var(--semi-color-text-2)]">OpenNext Cloudflare 应用</p>
+								<p className="text-base font-semibold">Entrant Roster</p>
+								<p className="text-sm text-(--semi-color-text-2)">OpenNext Cloudflare 应用</p>
 							</div>
 						</div>
 						<h1 className="text-2xl font-semibold">欢迎回来</h1>
-						<p className="mt-2 text-sm text-[color:var(--semi-color-text-2)]">使用 GitHub 授权后继续访问管理工作台。</p>
+						<p className="mt-2 text-sm text-(--semi-color-text-2)">使用 GitHub 授权后继续访问管理工作台。</p>
 					</div>
 
-					<div className="rounded-lg border border-[color:var(--semi-color-border)] bg-[color:var(--semi-color-bg-1)] p-6 shadow-sm sm:p-8">
+					<div className="rounded-lg border border-(--semi-color-border) bg-(--semi-color-bg-1) p-6 shadow-sm sm:p-8">
 						<div className="mb-6 hidden lg:block">
 							<h2 className="text-2xl font-semibold">GitHub 登录</h2>
-							<p className="mt-2 text-sm text-[color:var(--semi-color-text-2)]">授权后会校验 GitHub 用户名。</p>
+							<p className="mt-2 text-sm text-(--semi-color-text-2)">授权后会校验 GitHub 用户名。</p>
 						</div>
 
 						{errorMessage ? (
@@ -79,18 +79,18 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
 						) : null}
 
 						<a
-							href="/api/auth/github"
+							href="/api/auth/callback/github"
 							className="flex h-11 w-full items-center justify-center gap-2 rounded-md bg-zinc-950 px-4 text-sm font-medium text-white transition hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-zinc-500/30"
 						>
 							<span className="text-base leading-none">GitHub</span>
 							<span>授权登录</span>
 						</a>
 
-						<p className="mt-4 text-sm leading-6 text-[color:var(--semi-color-text-2)]">
+						<p className="mt-4 text-sm leading-6 text-(--semi-color-text-2)">
 							授权成功后系统会读取 GitHub 基础资料，并仅在用户名为 {ALLOWED_GITHUB_LOGIN} 时放行。
 						</p>
 
-						<p className="mt-6 text-center text-sm text-[color:var(--semi-color-text-2)]">
+						<p className="mt-6 text-center text-sm text-(--semi-color-text-2)">
 							<Link href="/" className="font-medium text-blue-600 hover:text-blue-700">
 								返回首页
 							</Link>

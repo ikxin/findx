@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-	title: "Entrant",
-	description: "Entrant application",
+	title: "Entrant Roster",
+	description: "Entrant Roster application",
 };
 
 export default function RootLayout({
@@ -12,8 +12,8 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="zh-CN" className="min-h-full bg-[#f6f8fb]">
-			<body className="min-h-full bg-[#f6f8fb]">{children}</body>
+		<html lang="zh-CN" className="min-h-full bg-(--semi-color-bg-0)">
+			<body className="min-h-full bg-(--semi-color-bg-0)">{children}</body>
 		</html>
 	);
 }

@@ -5,6 +5,9 @@ import {
 	GITHUB_OAUTH_CODE_VERIFIER_COOKIE,
 	GITHUB_OAUTH_STATE_COOKIE,
 	SESSION_MAX_AGE_SECONDS,
+	createOAuthCodeChallenge,
+	createOAuthCodeVerifier,
+	createOAuthState,
 	createSessionCookieValue,
 	getGitHubCallbackUrl,
 	getGitHubOAuthConfig,
@@ -23,6 +26,9 @@ type GitHubUserResponse = {
 	avatar_url: string | null;
 };
 
+type GitHubOAuthConfig = NonNullable<ReturnType<typeof getGitHubOAuthConfig>>;
+type GitHubOAuthRequestUrl = Pick<URL, "origin" | "protocol">;
+
 export async function GET(request: NextRequest) {
 	const config = getGitHubOAuthConfig();
 	const requestUrl = request.nextUrl;
@@ -37,6 +43,11 @@ export async function GET(request: NextRequest) {
 	const state = requestUrl.searchParams.get("state");
 	const storedState = request.cookies.get(GITHUB_OAUTH_STATE_COOKIE)?.value;
 	const codeVerifier = request.cookies.get(GITHUB_OAUTH_CODE_VERIFIER_COOKIE)?.value;
+	const isOAuthCallback = Boolean(oauthError || code || state);
+
+	if (!isOAuthCallback) {
+		return redirectToGitHubAuthorization(requestUrl, config);
+	}
 
 	if (oauthError) {
 		return redirectToLogin("cancelled");
@@ -106,6 +117,38 @@ export async function GET(request: NextRequest) {
 	});
 	response.cookies.delete(GITHUB_OAUTH_STATE_COOKIE);
 	response.cookies.delete(GITHUB_OAUTH_CODE_VERIFIER_COOKIE);
+
+	return response;
+}
+
+async function redirectToGitHubAuthorization(requestUrl: GitHubOAuthRequestUrl, config: GitHubOAuthConfig) {
+	const state = createOAuthState();
+	const codeVerifier = createOAuthCodeVerifier();
+	const codeChallenge = await createOAuthCodeChallenge(codeVerifier);
+	const authorizationUrl = new URL("https://github.com/login/oauth/authorize");
+
+	authorizationUrl.searchParams.set("client_id", config.clientId);
+	authorizationUrl.searchParams.set("redirect_uri", getGitHubCallbackUrl(requestUrl.origin));
+	authorizationUrl.searchParams.set("scope", "read:user");
+	authorizationUrl.searchParams.set("state", state);
+	authorizationUrl.searchParams.set("code_challenge", codeChallenge);
+	authorizationUrl.searchParams.set("code_challenge_method", "S256");
+
+	const response = NextResponse.redirect(authorizationUrl);
+	response.cookies.set(GITHUB_OAUTH_STATE_COOKIE, state, {
+		httpOnly: true,
+		maxAge: 60 * 10,
+		path: "/",
+		sameSite: "lax",
+		secure: requestUrl.protocol === "https:",
+	});
+	response.cookies.set(GITHUB_OAUTH_CODE_VERIFIER_COOKIE, codeVerifier, {
+		httpOnly: true,
+		maxAge: 60 * 10,
+		path: "/",
+		sameSite: "lax",
+		secure: requestUrl.protocol === "https:",
+	});
 
 	return response;
 }
