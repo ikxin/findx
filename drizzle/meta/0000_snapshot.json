@@ -107,7 +107,7 @@
         },
         "study_years": {
           "name": "study_years",
-          "type": "integer",
+          "type": "text",
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
@@ -121,7 +121,7 @@
         },
         "birth_date": {
           "name": "birth_date",
-          "type": "integer",
+          "type": "text",
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
@@ -149,14 +149,14 @@
         },
         "freshman_info_status": {
           "name": "freshman_info_status",
-          "type": "integer",
+          "type": "text",
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
         },
         "has_allergen": {
           "name": "has_allergen",
-          "type": "integer",
+          "type": "text",
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
@@ -184,28 +184,28 @@
         },
         "register_status": {
           "name": "register_status",
-          "type": "integer",
+          "type": "text",
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
         },
         "checkin_status": {
           "name": "checkin_status",
-          "type": "integer",
+          "type": "text",
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
         },
         "checkin_date": {
           "name": "checkin_date",
-          "type": "integer",
+          "type": "text",
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
         },
         "from_poor_county": {
           "name": "from_poor_county",
-          "type": "integer",
+          "type": "text",
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
@@ -247,7 +247,7 @@
         },
         "outside_province_school": {
           "name": "outside_province_school",
-          "type": "integer",
+          "type": "text",
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
@@ -338,49 +338,49 @@
         },
         "single_parent_family": {
           "name": "single_parent_family",
-          "type": "integer",
+          "type": "text",
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
         },
         "orphan_status": {
           "name": "orphan_status",
-          "type": "integer",
+          "type": "text",
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
         },
         "family_annual_income": {
           "name": "family_annual_income",
-          "type": "real",
+          "type": "text",
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
         },
         "family_population": {
           "name": "family_population",
-          "type": "integer",
+          "type": "text",
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
         },
         "martyr_child": {
           "name": "martyr_child",
-          "type": "integer",
+          "type": "text",
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
         },
         "west_aid_student": {
           "name": "west_aid_student",
-          "type": "integer",
+          "type": "text",
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
         },
         "pre_register_status": {
           "name": "pre_register_status",
-          "type": "integer",
+          "type": "text",
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
@@ -401,21 +401,21 @@
         },
         "cadre_apply_status": {
           "name": "cadre_apply_status",
-          "type": "integer",
+          "type": "text",
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
         },
         "dorm_apply_status": {
           "name": "dorm_apply_status",
-          "type": "integer",
+          "type": "text",
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
         },
         "hardship_apply_status": {
           "name": "hardship_apply_status",
-          "type": "integer",
+          "type": "text",
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false

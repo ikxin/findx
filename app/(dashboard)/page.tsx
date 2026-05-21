@@ -34,7 +34,7 @@ const summaryCards = [
 
 export default function Home() {
 	return (
-		<main className="mx-auto flex w-full max-w-7xl flex-col gap-6 xl:gap-7">
+		<main className="flex w-full flex-col gap-6">
 			<Title heading={3} className="text-center md:text-left">
 				仪表盘
 			</Title>
