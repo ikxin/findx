@@ -3,8 +3,8 @@ import Link from "next/link";
 import { ALLOWED_GITHUB_LOGIN } from "@/lib/auth";
 
 export const metadata: Metadata = {
-	title: "登录 - Entrant Roster",
-	description: "登录 Entrant Roster",
+	title: "登录 - Studify",
+	description: "登录 Studify",
 };
 
 const errorMessages: Record<string, string> = {
@@ -32,10 +32,10 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
 		<main className="grid min-h-dvh bg-(--semi-color-bg-0) text-(--semi-color-text-0) lg:grid-cols-[minmax(0,1fr)_480px]">
 			<section className="hidden min-h-0 flex-col justify-between border-r border-(--semi-color-border) bg-(--semi-color-bg-1) p-10 lg:flex">
 				<div className="flex items-center gap-3">
-					<div className="flex size-10 items-center justify-center rounded-lg bg-blue-600 text-lg font-semibold text-white">E</div>
+					<div className="flex size-10 items-center justify-center rounded-lg bg-blue-600 text-lg font-semibold text-white">S</div>
 					<div>
-						<p className="text-base font-semibold">Entrant Roster</p>
-						<p className="text-sm text-(--semi-color-text-2)">OpenNext Cloudflare 应用</p>
+						<p className="text-base font-semibold">Studify</p>
+						<p className="text-sm text-(--semi-color-text-2)">vinext Cloudflare 应用</p>
 					</div>
 				</div>
 
@@ -48,7 +48,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
 				</div>
 
 				<p className="text-sm text-(--semi-color-text-2)">
-					Copyright &copy; {new Date().getFullYear()} Entrant Roster. All Rights Reserved.
+					Copyright &copy; {new Date().getFullYear()} Studify. All Rights Reserved.
 				</p>
 			</section>
 
@@ -56,10 +56,10 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
 				<div className="w-full max-w-sm">
 					<div className="mb-8 lg:hidden">
 						<div className="mb-5 flex items-center gap-3">
-							<div className="flex size-10 items-center justify-center rounded-lg bg-blue-600 text-lg font-semibold text-white">E</div>
+							<div className="flex size-10 items-center justify-center rounded-lg bg-blue-600 text-lg font-semibold text-white">S</div>
 							<div>
-								<p className="text-base font-semibold">Entrant Roster</p>
-								<p className="text-sm text-(--semi-color-text-2)">OpenNext Cloudflare 应用</p>
+								<p className="text-base font-semibold">Studify</p>
+								<p className="text-sm text-(--semi-color-text-2)">vinext Cloudflare 应用</p>
 							</div>
 						</div>
 						<h1 className="text-2xl font-semibold">欢迎回来</h1>

@@ -82,7 +82,7 @@ export async function GET(request: NextRequest) {
 		headers: {
 			Accept: "application/vnd.github+json",
 			Authorization: `Bearer ${tokenData.access_token}`,
-			"User-Agent": "entrant",
+			"User-Agent": "studify",
 			"X-GitHub-Api-Version": "2022-11-28",
 		},
 	});

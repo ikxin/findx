@@ -7,8 +7,9 @@ const eslintConfig = defineConfig([
 	...nextTs,
 	globalIgnores([
 		".next/**",
-		".open-next/**",
+		".vinext/**",
 		".wrangler/**",
+		"dist/**",
 		"out/**",
 		"build/**",
 		"cloudflare-env.d.ts",

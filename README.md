@@ -1,14 +1,14 @@
-# OpenNext Starter
+# Studify
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
 
-Read the documentation at https://opennext.js.org/cloudflare.
+This project now runs on [vinext](https://github.com/cloudflare/vinext) with Cloudflare Workers.
 
 ## Develop
 
-Run the Next.js development server:
+Run the vinext development server:
 
 ```bash
 npm run dev
@@ -19,15 +19,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## Preview
-
-Preview the application locally on the Cloudflare runtime:
-
-```bash
-npm run preview
-# or similar package manager command
-```
-
 ## Deploy
 
 Deploy the application to Cloudflare:
@@ -37,11 +28,17 @@ npm run deploy
 # or similar package manager command
 ```
 
+Use the preview deployment target when needed:
+
+```bash
+npm run upload
+```
+
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+To learn more about the stack used here, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [vinext Documentation](https://github.com/cloudflare/vinext) - learn about the Vite-based Next.js runtime.
+- [Cloudflare Workers Documentation](https://developers.cloudflare.com/workers/) - learn about the deployment target.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) to learn more about the application framework API that vinext reimplements.

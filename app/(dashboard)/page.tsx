@@ -65,14 +65,14 @@ export default function Home() {
 
 		const { summary } = state.data;
 
-		return [
-			{
-				label: "新生总数",
-				value: summary.total,
-				detail: "D1 entrant",
-				icon: <IconUserGroup size="large" />,
-				color: "light-blue" as const,
-			},
+			return [
+				{
+					label: "新生总数",
+					value: summary.total,
+					detail: "D1 studify",
+					icon: <IconUserGroup size="large" />,
+					color: "light-blue" as const,
+				},
 			{
 				label: "已预注册",
 				value: summary.preRegistered,

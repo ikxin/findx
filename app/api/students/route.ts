@@ -1,4 +1,4 @@
-import { getCloudflareContext } from "@opennextjs/cloudflare";
+import { env } from "cloudflare:workers";
 import { NextRequest, NextResponse } from "next/server";
 import { AUTH_SESSION_COOKIE, getGitHubOAuthConfig, verifySessionCookieValue } from "@/lib/auth";
 import type { StudentFilterOptions, StudentListData, StudentRecord, StudentSortBy, StudentSortOrder } from "@/types/students";
@@ -119,7 +119,6 @@ export async function GET(request: NextRequest) {
 	}
 
 	try {
-		const { env } = await getCloudflareContext({ async: true });
 		const searchParams = request.nextUrl.searchParams;
 		const currentPage = Math.max(toInteger(searchParams.get("page"), 1), 1);
 		const pageSize = clamp(toInteger(searchParams.get("pageSize"), DEFAULT_PAGE_SIZE), 1, MAX_PAGE_SIZE);

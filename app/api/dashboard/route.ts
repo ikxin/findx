@@ -1,4 +1,4 @@
-import { getCloudflareContext } from "@opennextjs/cloudflare";
+import { env } from "cloudflare:workers";
 import { NextRequest, NextResponse } from "next/server";
 import { AUTH_SESSION_COOKIE, getGitHubOAuthConfig, verifySessionCookieValue } from "@/lib/auth";
 import type { DashboardData, DashboardRecentCheckin } from "@/types/dashboard";
@@ -32,8 +32,6 @@ export async function GET(request: NextRequest) {
 	}
 
 	try {
-		const { env } = await getCloudflareContext({ async: true });
-
 		const summary = await env.DB.prepare(
 			`
 			SELECT
