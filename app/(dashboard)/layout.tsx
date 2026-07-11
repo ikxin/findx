@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Avatar, Button, Dropdown, Layout, Nav, Toast } from "@douyinfe/semi-ui";
 import {
 	IconBell,
@@ -12,6 +12,7 @@ import {
 	IconSemiLogo,
 	IconSun,
 	IconUser,
+	IconUserGroup,
 } from "@douyinfe/semi-icons";
 import { authClient } from "@/lib/auth-client";
 
@@ -19,7 +20,13 @@ const { Header, Sider, Content, Footer } = Layout;
 
 const sideMenuItems = [
 	{ itemKey: "dashboard", text: "仪表盘", icon: <IconHome size="large" /> },
+	{ itemKey: "student", text: "学生管理", icon: <IconUserGroup size="large" /> },
 ];
+
+const menuRoutes = {
+	dashboard: "/",
+	student: "/student",
+} as const;
 
 export default function DashboardLayout({
 	children,
@@ -27,6 +34,7 @@ export default function DashboardLayout({
 	children: React.ReactNode;
 }>) {
 	const router = useRouter();
+	const pathname = usePathname();
 	const [siderVisible, setSiderVisible] = useState(false);
 	const [theme, setTheme] = useState<"light" | "dark">(() =>
 		typeof document !== "undefined" && document.body.getAttribute("theme-mode") === "dark" ? "dark" : "light",
@@ -58,6 +66,18 @@ export default function DashboardLayout({
 			Toast.error("退出登录失败，请稍后重试。");
 		}
 	};
+
+	const handleMenuSelect = ({ itemKey }: { itemKey: string | number }) => {
+		const route = menuRoutes[itemKey as keyof typeof menuRoutes];
+
+		if (route && pathname !== route) {
+			router.push(route);
+		}
+
+		setSiderVisible(false);
+	};
+
+	const selectedMenuKey = pathname.startsWith("/student") ? "student" : "dashboard";
 
 	return (
 		<Layout className="h-dvh overflow-hidden">
@@ -120,8 +140,9 @@ export default function DashboardLayout({
 				<Sider className="hidden! shrink-0 bg-(--semi-color-bg-1) md:block!">
 					<Nav
 						style={{ maxWidth: 220, height: "100%" }}
-						selectedKeys={["dashboard"]}
+						selectedKeys={[selectedMenuKey]}
 						items={sideMenuItems}
+						onSelect={handleMenuSelect}
 						footer={{
 							collapseButton: true,
 							collapseText: (collapsed) => (collapsed ? "展开侧边栏" : "收起侧边栏"),
@@ -155,8 +176,9 @@ export default function DashboardLayout({
 			>
 				<Nav
 					style={{ maxWidth: 220, height: "100%" }}
-					selectedKeys={["dashboard"]}
+					selectedKeys={[selectedMenuKey]}
 					items={sideMenuItems}
+					onSelect={handleMenuSelect}
 				/>
 			</div>
 		</Layout>

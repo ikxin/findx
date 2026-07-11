@@ -1,6 +1,7 @@
 import { drizzleAdapter } from "@better-auth/drizzle-adapter";
 import { betterAuth } from "better-auth";
 import { env } from "cloudflare:workers";
+import { v7 as uuidv7 } from "uuid";
 import { getDb } from "@/lib/db";
 import { accounts, sessions, users, verifications } from "@/lib/schema";
 
@@ -16,6 +17,11 @@ export const auth = betterAuth({
 		schema,
 		usePlural: true,
 	}),
+	advanced: {
+		database: {
+			generateId: () => uuidv7(),
+		},
+	},
 	emailAndPassword: {
 		enabled: true,
 	},
