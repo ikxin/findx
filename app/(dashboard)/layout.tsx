@@ -21,11 +21,13 @@ const { Header, Sider, Content, Footer } = Layout;
 const sideMenuItems = [
 	{ itemKey: "dashboard", text: "仪表盘", icon: <IconHome size="large" /> },
 	{ itemKey: "student", text: "学生管理", icon: <IconUserGroup size="large" /> },
+	{ itemKey: "user", text: "用户管理", icon: <IconUser size="large" /> },
 ];
 
 const menuRoutes = {
 	dashboard: "/",
 	student: "/student",
+	user: "/user",
 } as const;
 
 export default function DashboardLayout({
@@ -56,14 +58,14 @@ export default function DashboardLayout({
 			const { error } = await authClient.signOut();
 
 			if (error) {
-				Toast.error(error.message ?? "退出登录失败，请稍后重试。");
+				Toast.error(error.message ?? "退出登录失败，请稍后重试");
 				return;
 			}
 
 			router.replace("/login");
 			router.refresh();
 		} catch {
-			Toast.error("退出登录失败，请稍后重试。");
+			Toast.error("退出登录失败，请稍后重试");
 		}
 	};
 
@@ -77,11 +79,11 @@ export default function DashboardLayout({
 		setSiderVisible(false);
 	};
 
-	const selectedMenuKey = pathname.startsWith("/student") ? "student" : "dashboard";
+	const selectedMenuKey = pathname.startsWith("/student") ? "student" : pathname.startsWith("/user") ? "user" : "dashboard";
 
 	return (
 		<Layout className="h-dvh overflow-hidden">
-			<Header className="shrink-0 border-b border-(--semi-color-border) bg-(--semi-color-bg-1)">
+			<Header className="shrink-0 bg-(--semi-color-bg-1)">
 				<Nav mode="horizontal">
 					<Nav.Header>
 						<Button
@@ -121,7 +123,9 @@ export default function DashboardLayout({
 							position="bottomRight"
 							render={
 								<Dropdown.Menu>
-									<Dropdown.Item icon={<IconUser />}>个人信息</Dropdown.Item>
+									<Dropdown.Item icon={<IconUser />} onClick={() => router.push("/user")}>
+										个人信息
+									</Dropdown.Item>
 									<Dropdown.Item onClick={() => void handleSignOut()}>退出登录</Dropdown.Item>
 								</Dropdown.Menu>
 							}

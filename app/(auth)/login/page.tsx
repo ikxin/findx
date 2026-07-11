@@ -23,7 +23,7 @@ export default function LoginPage() {
 					<p className="mb-4 text-sm font-medium text-blue-600">工作台登录</p>
 					<h1 className="text-4xl font-semibold leading-tight">管理入口，保持清晰高效。</h1>
 					<p className="mt-5 max-w-lg text-base leading-7 text-(--semi-color-text-2)">
-						使用邮箱和密码创建账户并登录，继续访问 Studify 管理工作台。
+						使用已有账户的邮箱和密码登录，继续访问 Studify 管理工作台。
 					</p>
 				</div>
 

@@ -24,6 +24,7 @@ export const auth = betterAuth({
 	},
 	emailAndPassword: {
 		enabled: true,
+		disableSignUp: true,
 	},
 	secret: authBindings.BETTER_AUTH_SECRET ?? process.env.BETTER_AUTH_SECRET,
 	baseURL: authBindings.BETTER_AUTH_URL ?? process.env.BETTER_AUTH_URL,

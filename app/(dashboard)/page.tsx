@@ -16,7 +16,7 @@ const overviewItems = [
 	{
 		label: "登录方式",
 		value: "邮箱密码",
-		detail: "账户自主注册",
+		detail: "仅限已有账户",
 		icon: <IconUser size="large" />,
 		color: "blue" as const,
 	},
@@ -39,7 +39,7 @@ const overviewItems = [
 const systemStatus = [
 	{ label: "会话管理", value: "服务端会话" },
 	{ label: "数据连接", value: "远程 D1" },
-	{ label: "当前模式", value: "静态数据" },
+	{ label: "账户注册", value: "已关闭" },
 ] as const;
 
 export default function Home() {

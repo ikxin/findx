@@ -28,14 +28,14 @@ export async function GET(request: Request) {
 		const session = await auth.api.getSession({ headers: request.headers });
 
 		if (!session) {
-			return Response.json({ message: "请先登录后再访问学生数据。" }, { status: 401 });
+			return Response.json({ message: "请先登录后再访问学生数据" }, { status: 401 });
 		}
 
 		const { searchParams } = new URL(request.url);
 		const query = searchParams.get("query")?.trim() ?? "";
 
 		if (query.length > MAX_QUERY_LENGTH) {
-			return Response.json({ message: "查询内容不能超过 100 个字符。" }, { status: 400 });
+			return Response.json({ message: "查询内容不能超过 100 个字符" }, { status: 400 });
 		}
 
 		const page = getPositiveInteger(searchParams.get("page"), 1, MAX_PAGE);
@@ -73,6 +73,6 @@ export async function GET(request: Request) {
 			},
 		});
 	} catch {
-		return Response.json({ message: "学生数据暂时无法加载，请稍后重试。" }, { status: 500 });
+		return Response.json({ message: "学生数据暂时无法加载，请稍后重试" }, { status: 500 });
 	}
 }

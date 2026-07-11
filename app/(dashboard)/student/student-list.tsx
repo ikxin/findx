@@ -237,7 +237,7 @@ export function StudentList() {
 				}
 			} catch {
 				if (isActive) {
-					Toast.error("学生数据加载失败，请稍后重试。");
+					Toast.error("学生数据加载失败，请稍后重试");
 				}
 			} finally {
 				if (isActive) {
@@ -379,7 +379,7 @@ export function StudentList() {
 				{selectedStudent ? (
 					<div className="flex min-h-0 flex-1 flex-col">
 						<div className="shrink-0 px-6 pt-6">
-							<div className="flex flex-col gap-4 border-b border-(--semi-color-border) pb-6 sm:flex-row sm:items-center sm:justify-between">
+							<div className="flex flex-col gap-4 pb-6 sm:flex-row sm:items-center sm:justify-between">
 								<div className="flex min-w-0 items-center gap-4">
 									<Avatar alt={selectedStudent.name} color="blue" size="large">
 										{selectedStudent.name.slice(0, 1)}
