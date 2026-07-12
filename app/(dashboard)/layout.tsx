@@ -7,6 +7,7 @@ import {
 	IconBell,
 	IconHelpCircle,
 	IconHome,
+	IconMapPin,
 	IconMenu,
 	IconMoon,
 	IconSemiLogo,
@@ -21,12 +22,14 @@ const { Header, Sider, Content, Footer } = Layout;
 const sideMenuItems = [
 	{ itemKey: "dashboard", text: "仪表盘", icon: <IconHome size="large" /> },
 	{ itemKey: "student", text: "学生管理", icon: <IconUserGroup size="large" /> },
+	{ itemKey: "insight", text: "学生地图", icon: <IconMapPin size="large" /> },
 	{ itemKey: "user", text: "用户管理", icon: <IconUser size="large" /> },
 ];
 
 const menuRoutes = {
 	dashboard: "/",
 	student: "/student",
+	insight: "/insight",
 	user: "/user",
 } as const;
 
@@ -79,7 +82,13 @@ export default function DashboardLayout({
 		setSiderVisible(false);
 	};
 
-	const selectedMenuKey = pathname.startsWith("/student") ? "student" : pathname.startsWith("/user") ? "user" : "dashboard";
+	const selectedMenuKey = pathname.startsWith("/student")
+		? "student"
+		: pathname.startsWith("/insight")
+			? "insight"
+			: pathname.startsWith("/user")
+				? "user"
+				: "dashboard";
 
 	return (
 		<Layout className="h-dvh overflow-hidden">

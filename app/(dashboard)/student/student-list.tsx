@@ -180,7 +180,7 @@ function DetailGroup({ group, student }: { group: DetailGroup; student: Student 
 				{group.fields.map((field) => (
 					<div key={field} className={`min-w-0 ${fullWidthFields.has(field) ? "sm:col-span-2" : ""}`}>
 						<dt className="text-sm text-(--semi-color-text-2)">{fieldLabels[field]}</dt>
-						<dd className="m-0 mt-1 break-words text-base font-medium leading-6 text-(--semi-color-text-0)">
+						<dd className="m-0 mt-1 wrap-break-word text-base font-medium leading-6 text-(--semi-color-text-0)">
 							{displayValue(student[field])}
 						</dd>
 					</div>

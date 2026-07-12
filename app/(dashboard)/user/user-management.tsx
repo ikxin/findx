@@ -134,7 +134,7 @@ export function UserManagement() {
 					<dl className="grid grid-cols-1 gap-x-8 gap-y-5 sm:grid-cols-2">
 						<div className="min-w-0">
 							<dt className="text-sm text-(--semi-color-text-2)">名称</dt>
-							<dd className="m-0 mt-1 break-words text-base font-medium text-(--semi-color-text-0)">{profile.name}</dd>
+							<dd className="m-0 mt-1 wrap-break-word text-base font-medium text-(--semi-color-text-0)">{profile.name}</dd>
 						</div>
 						<div className="min-w-0">
 							<dt className="text-sm text-(--semi-color-text-2)">邮箱</dt>
